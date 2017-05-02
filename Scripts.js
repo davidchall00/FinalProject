@@ -29,3 +29,13 @@ function vGetMovies(eltSelect) {
     var strURL = "Ajax.php";
     vDoAjax(strURL, strQueryString, vDisplayMovieInfo);
 }
+
+// Function to display the movie info returned by the server when a new movie is
+// selected from the ddl
+function vDisplayMovieInfo() {
+    if (this.readyState === 4) {
+        if (this.status === 200) {
+            
+        }
+    }
+}
