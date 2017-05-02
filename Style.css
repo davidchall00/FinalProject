@@ -1,0 +1,52 @@
+
+header{
+    background-color: gold;
+    color: black;
+    margin: 0px;
+    text-align: center;
+}
+
+select{
+    border: 2px solid black;
+}
+
+h1{
+    font-size: 42px;
+    margin: 0px 0px 0px 0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+nav {
+    float: left;
+    background-color: red;
+    color: black;
+    width: 20%;
+    text-align: center;
+    height: 350px;
+    margin: 0px;
+}
+
+section{
+    width: 40%;
+    background-color: silver;
+    margin-left: 20%;
+    color: black;
+    height: 335px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+div{
+    width: 40%;
+    float: right;
+    background-color: red;
+    color: black;
+    height: 350px;
+    margin: 0px;
+    text-align: center;
+}
+
+body{
+    margin: 0px;
+}
