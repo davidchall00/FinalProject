@@ -1,4 +1,4 @@
-<p>Title: <input id="txtTitle" type="text" readonly="readonly"></p>
+<h2>Title: <input id="txtTitle" type="text" readonly="readonly"></h2>
 <p>Studio: <input id="txtStudio" type="text" readonly="readonly"></p>
 <p>Release Year: <input id="txtYear" type="text" readonly="readonly"></p>
 <p>Running Time: <input id="txtTime" type="text" readonly="readonly"></p>
