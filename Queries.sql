@@ -19,3 +19,23 @@ ON `vStudios`.`fMovieID` = `tMovieLocations`.`fMovieID`
 ON `tMovieLocations`.`fLocationID` = `tLocations`.`fLocationID`;
 
 DROP VIEW `vFullMovieInfo`;
+
+/* view to have persons birthplace with names */
+CREATE VIEW `vPersonBirth` AS
+SELECT `tPeople`.`fPersonID`, `tPeople`.`fPriFirstName`, `tPeople`.`fPriLastname`, `tPeople`.`fBorn`, `tPeople`.`fDied`, `tLocations`.`fLocationName` AS `fBirthPlace`
+FROM `tPeople` INNER JOIN `tLocations`
+ON `tPeople`.`fBirthPlaceID` = `tLocations`.`fLocationID`;
+
+DROP VIEW `vPersonBirth`;
+
+/* view to have all information about a person and films in one place*/
+CREATE VIEW `vFullPersonInfo` AS
+SELECT `tMovies`.`fMovieID`, `tMovies`.`fTitle`, `tPersonMovieRoles`.`fPersonID`, `tPersonMovieRoles`.`fRoleID`, `vPersonBirth`.`fPriFirstName`, `vPersonBirth`.`fPriLastname`, `vPersonBirth`.`fBorn`, `vPersonBirth`.`fDied`, `vPersonBirth`.`fBirthPlace`, `tNames`.`fAltName`
+FROM `tMovies` INNER JOIN `tPersonMovieRoles`
+	ON `tMovies`.`fMovieID` = `tPersonMovieRoles`.`fMovieID`
+    INNER JOIN `vPersonBirth`
+    	ON `tPersonMovieRoles`.`fPersonID` = `vPersonBirth`.`fPersonID`
+    LEFT JOIN `tNames`
+    	ON `vPersonBirth`.`fPersonID` = `tNames`.`fPersonID`;
+
+DROP VIEW `vFullPersonInfo`;
