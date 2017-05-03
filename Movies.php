@@ -25,7 +25,7 @@ include_once 'DB.php';
             echo '<option value="' . $row['fMovieID'] . '" >' . $row['fTitle'] .
             '</option>';
         }
-        moviesByID($conn, $iSelMovieID);
+        
         ?>
     </select>
 </p>
