@@ -1,5 +1,6 @@
 <?php
 include_once 'DB.php';
+include_once 'GetData.php';
 ?>
 <p>
     <select name="selMovie" id="selMovie" onchange="vGetMovies(this);">

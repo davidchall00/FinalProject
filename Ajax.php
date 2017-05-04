@@ -1,6 +1,7 @@
 <?php
 
 include_once 'DB.php';
+include_once 'GetData.php';
 
 $strFunction = strGetPOSTParam('function');
 
@@ -16,4 +17,9 @@ switch ($strFunction) {
         moviesByTitle($conn, $iSelMovieID);
         break;
 
+}
+
+function strGetPOSTParam($strParamName) {
+    $strParamValue = filter_input(INPUT_POST, $strParamName, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    return $strParamValue;
 }
