@@ -39,3 +39,19 @@ FROM `tMovies` INNER JOIN `tPersonMovieRoles`
     	ON `vPersonBirth`.`fPersonID` = `tNames`.`fPersonID`;
 
 DROP VIEW `vFullPersonInfo`;
+
+/* procedure to get the movies by MovieID */
+CREATE PROCEDURE `pMovieByID`(`prmMovieID` INTEGER)
+SELECT `fMovieID`, `fTitle`, `fStudioName`, `fReleased`, `fRunTime`, `fLocationName`
+FROM `vFullMovieInfo`
+WHERE `fMovieID` = `prmMovieID`;
+
+DROP PROCEDURE `pMovieByID`;
+
+/* A view to have FilmID with a persons role and full name */
+CREATE VIEW `vPersonRoles` AS
+SELECT `tPersonMovieRoles`.`fPersonID`, `tPersonMovieRoles`.`fMovieID`, `tPersonMovieRoles`.`fRoleID`, `tPeople`.`fPriFirstName`, `tPeople`.`fPriLastname`
+FROM `tPersonMovieRoles` INNER JOIN `tPeople`
+ON `tPersonMovieRoles`.`fPersonID` = `tPeople`.`fPersonID`;
+
+DROP VIEW `vPersonRoles`;
