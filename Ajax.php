@@ -8,7 +8,7 @@ $strFunction = strGetPOSTParam('function');
 switch ($strFunction) {
     case 'GetMovies':
         //get the MovieID sent via query string
-        $iSelMovieID = strGetPOSTParam('fMovieID');
+        $iSelMovieID = strGetPOSTParam('movieID');
 
         //connect to the database
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
