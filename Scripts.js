@@ -25,9 +25,11 @@ function vGetMovies(eltSelect) {
     var strMovieID = eltSelect.value;
     // construct query string to pass the author ID to the server
     var strQueryString = "function=GetMovies&movieID=" + strMovieID;
+    var strQueryStringCast = "function=GetCast&movieID=" + strMovieID;
     // set up ajax and send request
     var strURL = "Ajax.php";
-    vDoAjax(strURL, strQueryString, vDisplayMovieInfo); 
+    vDoAjax(strURL, strQueryString, vDisplayMovieInfo);
+    vDoAjax(strURL, strQueryStringCast, vDisplayCast);
 }
 
 // Function to display the movie info returned by the server when a new movie is
@@ -38,6 +40,16 @@ function vDisplayMovieInfo() {
             var eltSection = document.getElementById("secMovieInfo");
             vRemoveAllChildren(eltSection);
             eltSection.innerHTML = this.responseText;
+        }
+    }
+}
+
+function  vDisplayCast() {
+    if (this.readyState === 4) {
+        if (this.status === 200) {
+            var eltTBody = document.getElementById("tbyCast");
+            vRemoveAllChildren(eltTBody);
+            eltTBody.innerHTML = this.responseText;
         }
     }
 }

@@ -16,6 +16,12 @@ switch ($strFunction) {
         //call the function to build and return the list of movies by the MovieID
         moviesByTitle($conn, $iSelMovieID);
         break;
+    
+    case 'GetCast':
+        $iSelMovieID = strGetPOSTParam('movieID');
+        $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
+        castByMovie($conn, $iSelMovieID);
+        break;
 }   
 function strGetPOSTParam($strParamName) {
     $strParamValue = filter_input(INPUT_POST, $strParamName, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
