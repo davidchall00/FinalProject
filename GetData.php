@@ -15,14 +15,3 @@ function moviesByTitle($conn, $movieID) {
     }
     echo '</ul>';
 }
-
-function castByMovie($conn, $movieID) {
-    $strMovieCast = "CALL `pMovieCast` ($movieID)";
-    $rsCastInfo = $conn->query($strMovieCast);
-    $row = $rsCastInfo->fetch();
-    foreach ($rsCastInfo as $row) {
-        echo '<tr>';
-        echo '<td>'.$row['fPriFirstName']." ".$row['fPriLastName'].'</td>';
-        echo '</tr>';
-    }
-}
