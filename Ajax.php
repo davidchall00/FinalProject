@@ -18,13 +18,27 @@ switch ($strFunction) {
         break;
 
     case 'GetCast':
-        $strQuery = 'CALL `pMovieCast'.$iSelMovieID;
+        $iSelMovieID = strGetPOSTParam('movieID');
+        $strQuery = 'CALL `pMovieCast`'.'('.$iSelMovieID.')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsCastInfo = $conn->query($strQuery);
         $row = $rsCastInfo->fetch();
         foreach ($rsCastInfo as $row) {
             echo '<tr>';
-            echo '<td>'.$row['fPriFirstName']." ".$row['fPriLastName'].'</td>';
+            echo '<td>'.$row['fPriFirstName'].'</td>';
+            echo '</tr>';
+        }
+        break;
+        
+        case 'GetDirector':
+        $iSelMovieID = strGetPOSTParam('movieID');
+        $strQuery = 'CALL `pMovieDirect`'.'('.$iSelMovieID.')';
+        $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
+        $rsDirectInfo = $conn->query($strQuery);
+        $row = $rsDirectInfo->fetch();
+        foreach ($rsDirectInfo as $row) {
+            echo '<tr>';
+            echo '<td>'.$row['fPriFirstName'].'</td>';
             echo '</tr>';
         }
         break;
