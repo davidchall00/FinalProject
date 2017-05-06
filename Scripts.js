@@ -27,7 +27,7 @@ function vGetMovies(eltSelect) {
     var strQueryString = "function=GetMovies&movieID=" + strMovieID;
     // set up ajax and send request
     var strURL = "Ajax.php";
-    vDoAjax(strURL, strQueryString, vDisplayMovieInfo);
+    vDoAjax(strURL, strQueryString, vDisplayMovieInfo); 
 }
 
 // Function to display the movie info returned by the server when a new movie is

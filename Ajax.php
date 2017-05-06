@@ -16,9 +16,7 @@ switch ($strFunction) {
         //call the function to build and return the list of movies by the MovieID
         moviesByTitle($conn, $iSelMovieID);
         break;
-
-}
-
+}   
 function strGetPOSTParam($strParamName) {
     $strParamValue = filter_input(INPUT_POST, $strParamName, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     return $strParamValue;
