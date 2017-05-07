@@ -25,7 +25,8 @@ switch ($strFunction) {
         $row = $rsCastInfo->fetch();
         foreach ($rsCastInfo as $row) {
             echo '<tr>';
-            echo '<td>'.'<a href="#">'.$row['fPriFirstName'].'</td>'.'</a>';
+        echo '<td>'.'<a href="#" onclick="vShowPerson"; return false;>'.$row['fPriFirstName'].
+                ' '.$row['fPriLastname'].'</td>'.'</a>';
             echo '</tr>';
         }
         break;
@@ -38,29 +39,29 @@ switch ($strFunction) {
         $row = $rsDirectInfo->fetch();
         foreach ($rsDirectInfo as $row) {
             echo '<tr>';
-            echo '<td>'.'<a href="#">'.$row['fPriFirstName'].'</td>'.'</a>';
+            echo '<td>'.'<a href="#" onclick="vShowPerson"; return false;>'.$row['fPriFirstName'].
+                    ' '.$row['fPriLastname'].
+                    '</td>'.'</a>';
             echo '</tr>';
         }
         break;
         
         case 'GetProducer':
         $iSelMovieID = strGetPOSTParam('movieID');
-        $strQuery = 'SELECT `fPersonID`, `fMovieID`, `fRoleID`, `fPriFirstName`, `fPriLastName`'.
-                'FROM `pMovieDirect`'.
-                'WHERE `fMovieID =' .$iSelMovieID. 'AND `fRoleID` = (3)';
+        $strQuery = 'CALL `pMovieProduce`'.'('.$iSelMovieID.')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsProduceInfo = $conn->query($strQuery);
         $row = $rsProduceInfo->fetch();
         foreach ($rsProduceInfo as $row) {
             echo '<tr>';
-            echo '<td>'.'<a href="#">'.$row['fPriFirstName'].'</td>'.'</a>';
+            echo '<td>'.'<a href="#" onclick="vShowPerson"; return false;>'.$row['fPriFirstName'].
+                    ' '.$row['fPriLastname'].
+                    '</td>'.'</a>';
             echo '</tr>';
         }
         break;
-}
-
         
-
+}
 
 function strGetPOSTParam($strParamName) {
 $strParamValue = filter_input(INPUT_POST, $strParamName, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
