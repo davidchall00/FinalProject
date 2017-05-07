@@ -1,8 +1,8 @@
 <body>
-    <section id="secMovieInfo" style="background-color: silver;">
+    <section id="secMovieInfo">
 
     </section>
-    <section style="background-color: silver;">
+    <section>
         <table>
             <thead>Cast Member(s):</thead>
             <tbody id="tbyCast"></tbody>
