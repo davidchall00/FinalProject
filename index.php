@@ -28,7 +28,7 @@ and open the template in the editor.
             ?>
         </div>
         
-        <section style="sect">
+        <section>
             <?php
             include_once 'MovieInfo.php';
             ?>
