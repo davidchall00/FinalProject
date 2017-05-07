@@ -7,7 +7,7 @@
         <p>Location(s):</p>
         <ul id="lLocation"></ul>
     </section>
-    <section>
+    <section style="background-color: silver;">
         <table>
             <thead>Cast Member(s):</thead>
             <tbody id="tbyCast"></tbody>
