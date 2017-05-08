@@ -22,7 +22,6 @@ switch ($strFunction) {
         $strQuery = 'CALL `pMovieCast`'.'('.$iSelMovieID.')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsCastInfo = $conn->query($strQuery);
-        $row = $rsCastInfo->fetch();
         echo '<thead>Cast Member(s):</thead>';
         foreach ($rsCastInfo as $row) {
             echo '<tr>';
@@ -37,7 +36,6 @@ switch ($strFunction) {
         $strQuery = 'CALL `pMovieDirect`'.'('.$iSelMovieID.')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsDirectInfo = $conn->query($strQuery);
-        $row = $rsDirectInfo->fetch();
         echo '<thead>Director(s):</thead>';
         foreach ($rsDirectInfo as $row) {
             echo '<tr>';
@@ -53,7 +51,6 @@ switch ($strFunction) {
         $strQuery = 'CALL `pMovieProduce`'.'('.$iSelMovieID.')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsProduceInfo = $conn->query($strQuery);
-        $row = $rsProduceInfo->fetch();
         echo '<thead>Producer(s):</thead>';
         foreach ($rsProduceInfo as $row) {
             echo '<tr>';
