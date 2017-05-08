@@ -55,3 +55,10 @@ body{
     margin: 0px;
 }
 
+table{
+    text-align: center;
+}
+
+thead, td{
+    width: 350px;
+}
