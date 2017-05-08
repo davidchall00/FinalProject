@@ -41,9 +41,9 @@ function vGetMovies(eltSelect) {
 function vDisplayMovieInfo() {
     if (this.readyState === 4) {
         if (this.status === 200) {
-            var eltSection = document.getElementById("secMovieInfo");
-            vRemoveAllChildren(eltSection);
-            eltSection.innerHTML = this.responseText;
+            var eltTBody = document.getElementById("tbyMovieInfo");
+            vRemoveAllChildren(eltTBody);
+            eltTBody.innerHTML = this.responseText;
         }
     }
 }

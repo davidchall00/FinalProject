@@ -11,11 +11,11 @@ and open the template in the editor.
         <link href="Style.css" rel="stylesheet" type="text/css"/>
         <title>World's Greatest Movie List</title>
     </head>
-    <body>
+    
         <header>
             <h1>World's Greatest Movie List</h1>
         </header>
-        
+    <body>
         <nav>
             <?php
             include_once 'Movies.php';

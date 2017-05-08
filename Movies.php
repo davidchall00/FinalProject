@@ -2,6 +2,7 @@
 include_once 'DB.php';
 include_once 'GetData.php';
 ?>
+<h2>Make a Selection:</h2>
 <p>
     <select name="selMovie" id="selMovie" onchange="vGetMovies(this);">
         <?php

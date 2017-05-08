@@ -1,18 +1,17 @@
-<body>
-    <section id="secMovieInfo">
+<section>
+    <table>
+        <tbody id="tbyMovieInfo"></tbody>
+    </table>
 
-    </section>
-    <section>
-        <table>
-            <tbody id="tbyCast"></tbody>
-        </table>
+    <table>
+        <tbody id="tbyCast"></tbody>
+    </table>
 
-        <table>
-            <tbody id="tbyDirector"></tbody>
-        </table>
-        
-        <table>
-            <tbody id="tbyProducer"></tbody>
-        </table>
-    </section>
-</body>
+    <table>
+        <tbody id="tbyDirector"></tbody>
+    </table>
+
+    <table>
+        <tbody id="tbyProducer"></tbody>
+    </table>
+</section>
