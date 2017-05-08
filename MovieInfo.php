@@ -1,4 +1,4 @@
-<section>
+
     <table>
         <tbody id="tbyMovieInfo"></tbody>
     </table>
@@ -14,4 +14,3 @@
     <table>
         <tbody id="tbyProducer"></tbody>
     </table>
-</section>
