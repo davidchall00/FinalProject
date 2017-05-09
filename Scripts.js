@@ -91,3 +91,13 @@ function  vDisplayLocation() {
         }
     }
 }
+
+function vShowPerson(iRoleID, iPersonID) {
+    var strQuery = "function=GetPersonInfo&roleID=" + iRoleID + "personID=" + iPersonID;
+    var strUrl = "Ajax.php";
+    vDoAjax(strUrl, strQuery, vDisplayPersonInfo);
+}
+
+function vDisplayPersonInfo() {
+    
+}

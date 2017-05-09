@@ -25,7 +25,8 @@ switch ($strFunction) {
         echo '<thead><h3>Cast Member(s):</h3></thead>';
         foreach ($rsCastInfo as $row) {
             echo '<tr>';
-        echo '<td>'.'<a href="#" onclick="vShowPerson"; return false;>'.$row['fPriFirstName'].
+        echo '<td>'.'<a href="#" onclick="vShowPerson('.$row['fRoleID'].', '
+                    .$row['fPersonID'].')"; return false;>'.$row['fPriFirstName'].
                 ' '.$row['fPriLastname'].'</td>'.'</a>';
             echo '</tr>';
         }
@@ -39,7 +40,8 @@ switch ($strFunction) {
         echo '<thead><h3>Director(s):</h3></thead>';
         foreach ($rsDirectInfo as $row) {
             echo '<tr>';
-            echo '<td>'.'<a href="#" onclick="vShowPerson"; return false;>'.$row['fPriFirstName'].
+            echo '<td>'.'<a href="#" onclick="vShowPerson('.$row['fRoleID'].', '
+                    .$row['fPersonID'].')"; return false;>'.$row['fPriFirstName'].
                     ' '.$row['fPriLastname'].
                     '</td>'.'</a>';
             echo '</tr>';
@@ -54,7 +56,8 @@ switch ($strFunction) {
         echo '<thead><h3>Producer(s):</h3></thead>';
         foreach ($rsProduceInfo as $row) {
             echo '<tr>';
-            echo '<td>'.'<a href="#" onclick="vShowPerson"; return false;>'.$row['fPriFirstName'].
+            echo '<td>'.'<a href="#" onclick="vShowPerson('.$row['fRoleID'].', '
+                    .$row['fPersonID'].'); return false;">'.$row['fPriFirstName'].
                     ' '.$row['fPriLastname'].
                     '</td>'.'</a>';
             echo '</tr>';
@@ -72,7 +75,15 @@ switch ($strFunction) {
             echo '<td>'.$row['fLocationName'].'</td>';
             echo '</tr>';
         }
-        break;     
+        break;  
+        
+    case 'GetPersonInfo':
+        $iSelRoleID = strGetPOSTParam('roleID');
+        $iSelPersonID = strGetPOSTParam('personID');
+        $strQuery = 'Call `pPersonInfo`('.$iSelPersonID.', '.$iSelRoleID.')';
+        $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
+        $rsPersonInfo = $conn->query($strQuery);
+        
 }
 
 function strGetPOSTParam($strParamName) {
