@@ -55,10 +55,10 @@ body{
     margin: 0px;
 }
 
-table{
-    text-align: center;
+thead, td{
+    width: 550px;
 }
 
-thead, td{
-    width: 350px;
+table{
+    border: 2px solid black;
 }

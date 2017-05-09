@@ -6,7 +6,7 @@ function moviesByTitle($conn, $movieID) {
     $rsMovieInfo = $conn->query($strGetMovieInfo);
     $row = $rsMovieInfo->fetch();
     echo '<tr>';
-    echo '<td><h2>' . $row['fTitle'] . '</h2><td>';
+    echo '<td><h2>' . $row['fTitle'] . '</h2></td>';
     echo '</tr>';
     echo '<tr>';
     echo '<td>' . "Studio: " . $row['fStudioName'] . '</td>';
