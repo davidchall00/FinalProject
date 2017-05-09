@@ -61,6 +61,18 @@ switch ($strFunction) {
         }
         break;
         
+        case 'GetLocation':
+        $iSelMovieID = strGetPOSTParam('movieID');
+        $strQuery = 'Call `pMovieLocal`' . '('.$iSelMovieID.')';
+        $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
+        $rsLocalInfo = $conn->query($strQuery);
+        echo '<tr>Filming Locations:</tr>';
+        foreach ($rsLocalInfo as $row){
+            echo '<tr>';
+            echo '<td>'.$row['fLocationName'].'</td>';
+            echo '</tr>';
+        }
+        break;     
 }
 
 function strGetPOSTParam($strParamName) {

@@ -28,12 +28,14 @@ function vGetMovies(eltSelect) {
     var strQueryStringCast = "function=GetCast&movieID=" + strMovieID;
     var strQueryStringDirect = "function=GetDirector&movieID=" + strMovieID;
     var strQueryStringProduce = "function=GetProducer&movieID=" + strMovieID;
+    var strQueryLocation = "function=GetLocation&movieID=" + strMovieID;
     // set up ajax and send request
     var strURL = "Ajax.php";
     vDoAjax(strURL, strQueryString, vDisplayMovieInfo);
     vDoAjax(strURL, strQueryStringCast, vDisplayCast);
     vDoAjax(strURL, strQueryStringDirect, vDisplayDirect);
     vDoAjax(strURL, strQueryStringProduce, vDisplayProducer);
+    vDoAjax(strURL, strQueryLocation, vDisplayLocation);
 }
 
 // Function to display the movie info returned by the server when a new movie is
@@ -74,6 +76,16 @@ function  vDisplayProducer() {
     if (this.readyState === 4) {
         if (this.status === 200) {
             var eltTBody = document.getElementById("tbyProducer");
+            vRemoveAllChildren(eltTBody);
+            eltTBody.innerHTML = this.responseText;
+        }
+    }
+}
+
+function  vDisplayLocation() {
+    if (this.readyState === 4) {
+        if (this.status === 200) {
+            var eltTBody = document.getElementById("tbyLocations");
             vRemoveAllChildren(eltTBody);
             eltTBody.innerHTML = this.responseText;
         }

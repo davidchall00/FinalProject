@@ -17,7 +17,4 @@ function moviesByTitle($conn, $movieID) {
     echo '<tr>';
     echo '<td>' . "Running Time: " . $row['fRunTime'] . " minutes" . '</td>';
     echo '</tr>';
-    echo '<tr>';
-    echo '<td>' . "Location(s): " . $row['fLocationName'] . '</td>';
-    echo '</tr>';
 }
