@@ -21,13 +21,17 @@ h2{
     text-align: center;
     font-size: 30px;
 }
+
+h3{
+    font-size: 14px;
+}
 nav {
     float: left;
     background-color: red;
     color: black;
     width: 20%;
     text-align: center;
-    height: 450px;
+    height: 490px;
     margin: 0px;
 }
 
@@ -36,7 +40,7 @@ section{
     background-color: silver;
     margin-left: 20%;
     color: black;
-    height: 440px;
+    height: 480px;
     padding-top: 10px;
     text-align: center;
 }
@@ -46,7 +50,7 @@ div{
     float: right;
     background-color: red;
     color: black;
-    height: 450px;
+    height: 490px;
     margin: 0px;
     text-align: center;
 }

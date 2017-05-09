@@ -22,7 +22,7 @@ switch ($strFunction) {
         $strQuery = 'CALL `pMovieCast`'.'('.$iSelMovieID.')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsCastInfo = $conn->query($strQuery);
-        echo '<thead>Cast Member(s):</thead>';
+        echo '<thead><h3>Cast Member(s):</h3></thead>';
         foreach ($rsCastInfo as $row) {
             echo '<tr>';
         echo '<td>'.'<a href="#" onclick="vShowPerson"; return false;>'.$row['fPriFirstName'].
@@ -36,7 +36,7 @@ switch ($strFunction) {
         $strQuery = 'CALL `pMovieDirect`'.'('.$iSelMovieID.')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsDirectInfo = $conn->query($strQuery);
-        echo '<thead>Director(s):</thead>';
+        echo '<thead><h3>Director(s):</h3></thead>';
         foreach ($rsDirectInfo as $row) {
             echo '<tr>';
             echo '<td>'.'<a href="#" onclick="vShowPerson"; return false;>'.$row['fPriFirstName'].
@@ -51,7 +51,7 @@ switch ($strFunction) {
         $strQuery = 'CALL `pMovieProduce`'.'('.$iSelMovieID.')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsProduceInfo = $conn->query($strQuery);
-        echo '<thead>Producer(s):</thead>';
+        echo '<thead><h3>Producer(s):</h3></thead>';
         foreach ($rsProduceInfo as $row) {
             echo '<tr>';
             echo '<td>'.'<a href="#" onclick="vShowPerson"; return false;>'.$row['fPriFirstName'].
