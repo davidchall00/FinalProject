@@ -93,11 +93,17 @@ function  vDisplayLocation() {
 }
 
 function vShowPerson(iRoleID, iPersonID) {
-    var strQuery = "function=GetPersonInfo&roleID=" + iRoleID + "personID=" + iPersonID;
+    var strQuery = "function=GetPersonInfo&roleID=" + iRoleID + "&personID=" + iPersonID;
     var strUrl = "Ajax.php";
     vDoAjax(strUrl, strQuery, vDisplayPersonInfo);
 }
 
 function vDisplayPersonInfo() {
-    
+    if (this.readyState === 4) {
+        if (this.status === 200) {
+            var eltTBody = document.getElementById("tbyPeople");
+            vRemoveAllChildren(eltTBody);
+            eltTBody.innerHTML = this.responseText;
+        }
+    }
 }

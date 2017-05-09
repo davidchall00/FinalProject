@@ -83,7 +83,14 @@ switch ($strFunction) {
         $strQuery = 'Call `pPersonInfo`('.$iSelPersonID.', '.$iSelRoleID.')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsPersonInfo = $conn->query($strQuery);
-        
+        $row = $rsPersonInfo->fetch();
+        echo '<tr><td><h2>'.$row['fPriFirstName']. ' '.$row['fPriLastname'].
+                '</h2></td></tr>';
+        echo '<tr><td>Date of Birth: '.$row['fBorn'].'</td></tr>';
+        echo '<tr><td>Born in: '.$row['fBirthPlace'].'</td></tr>';
+        if ($row['fDied'] !== null) {
+            echo '<tr><td>Died: '.$row['fDied'].'</td></tr>';
+        }
 }
 
 function strGetPOSTParam($strParamName) {
