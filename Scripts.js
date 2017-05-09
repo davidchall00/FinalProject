@@ -42,7 +42,9 @@ function vDisplayMovieInfo() {
     if (this.readyState === 4) {
         if (this.status === 200) {
             var eltTBody = document.getElementById("tbyMovieInfo");
+            var elttbody = document.getElementById("tbyPeople");
             vRemoveAllChildren(eltTBody);
+            vRemoveAllChildren(elttbody);
             eltTBody.innerHTML = this.responseText;
         }
     }

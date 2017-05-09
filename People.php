@@ -1,5 +1,5 @@
 
 <table>
-    <tbody id="tbyMovies"></tbody>
+    <tbody id="tbyPeople"></tbody>
 </table>
 
