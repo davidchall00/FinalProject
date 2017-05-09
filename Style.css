@@ -56,9 +56,5 @@ body{
 }
 
 thead, td{
-    width: 550px;
-}
-
-table{
-    border: 2px solid black;
+    width: 545px;
 }
