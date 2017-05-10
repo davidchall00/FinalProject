@@ -93,15 +93,27 @@ function  vDisplayLocation() {
 }
 
 function vShowPerson(iRoleID, iPersonID) {
-    var strQuery = "function=GetPersonInfo&roleID=" + iRoleID + "&personID=" + iPersonID;
+    var strPersonInfo = "function=GetPersonInfo&roleID=" + iRoleID + "&personID=" + iPersonID;
+    var strPersonMovies = "function=GetPersonMovies&roleID=" + iRoleID + "&personID=" + iPersonID;
     var strUrl = "Ajax.php";
-    vDoAjax(strUrl, strQuery, vDisplayPersonInfo);
+    vDoAjax(strUrl, strPersonInfo, vDisplayPersonInfo);
+    vDoAjax(strUrl, strPersonMovies, vDisplayPersonMovies);
 }
 
 function vDisplayPersonInfo() {
     if (this.readyState === 4) {
         if (this.status === 200) {
             var eltTBody = document.getElementById("tbyPeople");
+            vRemoveAllChildren(eltTBody);
+            eltTBody.innerHTML = this.responseText;
+        }
+    }
+}
+
+function vDisplayPersonMovies() {
+    if (this.readyState === 4) {
+        if (this.status === 200) {
+            var eltTBody = document.getElementById("tbyMovie");
             vRemoveAllChildren(eltTBody);
             eltTBody.innerHTML = this.responseText;
         }
