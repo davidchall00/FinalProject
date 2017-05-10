@@ -45,8 +45,10 @@ function vDisplayMovieInfo() {
         if (this.status === 200) {
             var eltTBody = document.getElementById("tbyMovieInfo");
             var elttbody = document.getElementById("tbyPeople");
+            var eltMovie = document.getElementById("tbyMovie");
             vRemoveAllChildren(eltTBody);
             vRemoveAllChildren(elttbody);
+            vRemoveAllChildren(eltMovie);
             eltTBody.innerHTML = this.responseText;
         }
     }
