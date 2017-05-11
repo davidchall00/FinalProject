@@ -55,3 +55,45 @@ FROM `tPersonMovieRoles` INNER JOIN `tPeople`
 ON `tPersonMovieRoles`.`fPersonID` = `tPeople`.`fPersonID`;
 
 DROP VIEW `vPersonRoles`;
+
+/* procedure to get a cast members movie */
+CREATE PROCEDURE `pMovieCast`(`prmMovieID` INTEGER)
+SELECT `fMovieID`, `fPersonID`, `fRoleID`, `fPriFirstName`, `fPriLastName`
+FROM `vPersonRoles`
+WHERE `fMovieID` = `prmMovieID` AND `fRoleID` = 1;
+
+DROP PROCEDURE `pMovieCast`;
+
+/* procedure to get a producers movie */
+CREATE PROCEDURE `pMovieDirect`(`prmMovieID` INTEGER)
+SELECT `fMovieID`, `fPersonID`, `fRoleID`, `fPriFirstName`, `fPriLastName`
+FROM `vPersonRoles`
+WHERE `fMovieID` = `prmMovieID` AND `fRoleID` = 2;
+
+DROP PROCEDURE `pMovieDirect`;
+
+/* procedure to get a directors movie */
+CREATE PROCEDURE `pMovieProduce`(`prmMovieID` INTEGER)
+SELECT `fMovieID`, `fPersonID`, `fRoleID`, `fPriFirstName`, `fPriLastName`
+FROM `vPersonRoles`
+WHERE `fMovieID` = `prmMovieID` AND `fRoleID` = 3;
+
+DROP PROCEDURE `pMovieProduce`;
+
+/* procedure to get all info on a person when their link is chosen */
+CREATE PROCEDURE `pPersonInfo` (`prmPersonID` INTEGER, `prmRoleID` INTEGER)
+SELECT  `fPriFirstName`, `fPriLastName`, `fPersonID`, `fRoleID`, `fBorn`, `fDied`,
+ `fBirthPlace`, `fTitle`
+FROM `vFullPersonInfo`
+WHERE `fPersonID` = `prmPersonID` AND `fRoleID` = `prmRoleID`;
+
+DROP PROCEDURE `pPersonInfo`;
+
+/* procedure to get a persons AKA names */
+CREATE PROCEDURE `pPersonAKA`(`prmPersonID` INTEGER)
+SELECT `fPersonID`, `fAltName`
+FROM `tNames`
+WHERE `fPersonID` = `prmPersonID`;
+
+DROP PROCEDURE `pPersonAKA`;
+
