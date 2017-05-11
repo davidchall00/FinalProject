@@ -1,7 +1,6 @@
 <?php
 
 include_once 'DB.php';
-include_once 'GetData.php';
 
 $strFunction = strGetPOSTParam('function');
 
@@ -14,7 +13,21 @@ switch ($strFunction) {
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
 
         //call the function to build and return the list of movies by the MovieID
-        moviesByTitle($conn, $iSelMovieID);
+        $strGetMovieInfo = "CALL `pMovieByID`($iSelMovieID)";
+        $rsMovieInfo = $conn->query($strGetMovieInfo);
+        $row = $rsMovieInfo->fetch();
+        echo '<tr>';
+        echo '<td><h2>' . $row['fTitle'] . '</h2></td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td>' . "Studio: " . $row['fStudioName'] . '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td>' . "Release Year: " . $row['fReleased'] . '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td>' . "Running Time: " . $row['fRunTime'] . " minutes" . '</td>';
+        echo '</tr>';
         break;
 
     case 'GetCast':
@@ -96,15 +109,18 @@ switch ($strFunction) {
     case 'GetAKA':
         $iSelRoleID = strGetPOSTParam('roleID');
         $iSelPersonID = strGetPOSTParam('personID');
-        $strQuery = 'Call `pPersonAKA`(' . $iSelPersonID . ', ' . $iSelRoleID . ')';
+        $strQuery = 'Call `pPersonAKA`(' . $iSelPersonID . ')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsPersonAKA = $conn->query($strQuery);
-        foreach ($rsPersonAKA as $row) {
-            if ($row['fAltName'] !== null) {
-                echo '<tr><td><h3>AKA:</h3></tr></td>';
-                echo '<tr><td>' . $row['fAltName'] . '</td></tr>';
+        if ($rsPersonAKA->rowCount() > 0) {
+            echo '<tr><td><h3>AKA:</h3></tr></td>';
+            foreach ($rsPersonAKA as $row) {
+                if ($row['fAltName'] !== null) {
+                    echo '<tr><td>' . $row['fAltName'] . '</td></tr>';
+                }
             }
         }
+        break;
 
     case 'GetPersonMovies':
         $iSelRoleID = strGetPOSTParam('roleID');
@@ -112,10 +128,11 @@ switch ($strFunction) {
         $strQuery = 'Call `pPersonInfo`(' . $iSelPersonID . ', ' . $iSelRoleID . ')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsPersonMovies = $conn->query($strQuery);
-           echo '<tr><td><h3>Movies:</h3></tr></td>';
+        echo '<tr><td><h3>Movies:</h3></tr></td>';
         foreach ($rsPersonMovies as $row) {
             echo '<tr><td>' . $row['fTitle'] . '</td></tr>';
         }
+        break;
 }
 
 function strGetPOSTParam($strParamName) {
