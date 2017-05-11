@@ -99,11 +99,12 @@ switch ($strFunction) {
         $strQuery = 'Call `pPersonAKA`(' . $iSelPersonID . ', ' . $iSelRoleID . ')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsPersonAKA = $conn->query($strQuery);
-            echo '<tr><td><h3>AKA:</h3></tr></td>';
-            foreach ($rsPersonAKA as $row) {
+        foreach ($rsPersonAKA as $row) {
+            if ($row['fAltName'] !== null) {
+                echo '<tr><td><h3>AKA:</h3></tr></td>';
                 echo '<tr><td>' . $row['fAltName'] . '</td></tr>';
             }
-        
+        }
 
     case 'GetPersonMovies':
         $iSelRoleID = strGetPOSTParam('roleID');
