@@ -99,7 +99,7 @@ switch ($strFunction) {
         $strQuery = 'Call `pPersonInfo`(' . $iSelPersonID . ', ' . $iSelRoleID . ')';
         $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
         $rsPersonMovies = $conn->query($strQuery);
-        echo '<tr><td><h3>Movies:</h3></tr></td>';
+           echo '<tr><td><h3>Movies:</h3></tr></td>';
         foreach ($rsPersonMovies as $row) {
             echo '<tr><td>' . $row['fTitle'] . '</td></tr>';
         }
