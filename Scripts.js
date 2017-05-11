@@ -46,9 +46,11 @@ function vDisplayMovieInfo() {
             var eltTBody = document.getElementById("tbyMovieInfo");
             var elttbody = document.getElementById("tbyPeople");
             var eltMovie = document.getElementById("tbyMovie");
+            var eltAKA = document.getElementById("tbyAKA");
             vRemoveAllChildren(eltTBody);
             vRemoveAllChildren(elttbody);
             vRemoveAllChildren(eltMovie);
+            vRemoveAllChildren(eltAKA);
             eltTBody.innerHTML = this.responseText;
         }
     }
@@ -96,9 +98,11 @@ function  vDisplayLocation() {
 
 function vShowPerson(iRoleID, iPersonID) {
     var strPersonInfo = "function=GetPersonInfo&roleID=" + iRoleID + "&personID=" + iPersonID;
+    var strPersonAKA = "function=GetAKA&roleID=" + iRoleID + "&personID=" + iPersonID;
     var strPersonMovies = "function=GetPersonMovies&roleID=" + iRoleID + "&personID=" + iPersonID;
     var strUrl = "Ajax.php";
     vDoAjax(strUrl, strPersonInfo, vDisplayPersonInfo);
+    vDoAjax(strUrl, strPersonAKA, vDisplayPersonAKA);
     vDoAjax(strUrl, strPersonMovies, vDisplayPersonMovies);
 }
 
@@ -106,6 +110,16 @@ function vDisplayPersonInfo() {
     if (this.readyState === 4) {
         if (this.status === 200) {
             var eltTBody = document.getElementById("tbyPeople");
+            vRemoveAllChildren(eltTBody);
+            eltTBody.innerHTML = this.responseText;
+        }
+    }
+}
+
+function vDisplayPersonAKA() {
+    if (this.readyState === 4) {
+        if (this.status === 200) {
+            var eltTBody = document.getElementById("tbyAKA");
             vRemoveAllChildren(eltTBody);
             eltTBody.innerHTML = this.responseText;
         }

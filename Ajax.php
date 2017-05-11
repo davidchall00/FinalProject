@@ -92,7 +92,19 @@ switch ($strFunction) {
             echo '<tr><td>Died: ' . $row['fDied'] . '</td></tr>';
         }
         break;
+
+    case 'GetAKA':
+        $iSelRoleID = strGetPOSTParam('roleID');
+        $iSelPersonID = strGetPOSTParam('personID');
+        $strQuery = 'Call `pPersonAKA`(' . $iSelPersonID . ', ' . $iSelRoleID . ')';
+        $conn = connectDB('CSC366', 'HC-CSC366', 'Movies');
+        $rsPersonAKA = $conn->query($strQuery);
+            echo '<tr><td><h3>AKA:</h3></tr></td>';
+            foreach ($rsPersonAKA as $row) {
+                echo '<tr><td>' . $row['fAltName'] . '</td></tr>';
+            }
         
+
     case 'GetPersonMovies':
         $iSelRoleID = strGetPOSTParam('roleID');
         $iSelPersonID = strGetPOSTParam('personID');
